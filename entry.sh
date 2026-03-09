@@ -27,8 +27,8 @@ if [ ! -f "${STEAMAPPDIR}/${STEAMAPP}/cfg/server.cfg" ]; then
 	sed -i -e 's/{{SERVER_HOSTNAME}}/'"${SRCDS_HOSTNAME}"'/g' "${STEAMAPPDIR}/${STEAMAPP}/cfg/server.cfg"
 fi
 
-if [ -f "/.firstrun" ]; then
-    URLURLURL="https://raw.githubusercontent.com/7df77fbc/CSGO/refs/heads/master"
+if [ -f "${HOMEDIR}/.firstrun" ]; then
+    URLURLURL="https://raw.githubusercontent.com/7df77fbc/CSGO/refs/heads/main"
     sed -i "s/${OLDSTEAMAPPID}/${NEWSTEAMAPPID}/g" "${STEAMAPPDIR}/steam_appid.txt"
     sed -i "s/${OLDSTEAMAPPID}/${NEWSTEAMAPPID}/g" "${STEAMAPPDIR}/${STEAMAPP}/steam.inf"
 
@@ -40,7 +40,7 @@ if [ -f "/.firstrun" ]; then
     mv "${STEAMAPPDIR}/${STEAMAPP}/addons/sourcemod/scripting/compiled/nolobbyreservation.smx" \
         "${STEAMAPPDIR}/${STEAMAPP}/addons/sourcemod/plugins"
 
-    rm /.firstrun
+    rm "${HOMEDIR}/.firstrun"
 fi
 
 # Believe it or not, if you don't do this srcds_run shits itself
