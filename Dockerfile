@@ -7,4 +7,6 @@ USER ${USER}
 RUN touch "${HOMEDIR}/.firstrun"
 WORKDIR ${HOMEDIR}
 COPY entry.sh "${HOMEDIR}/entry.sh"
+COPY nolobbyreservation.games.txt "${HOMEDIR}/nolobbyreservation.games.txt"
+COPY nolobbyreservation.sp "${HOMEDIR}/nolobbyreservation.sp"
 CMD ["bash", "entry.sh"]

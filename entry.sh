@@ -28,12 +28,11 @@ if [ ! -f "${STEAMAPPDIR}/${STEAMAPP}/cfg/server.cfg" ]; then
 fi
 
 if [ -f "${HOMEDIR}/.firstrun" ]; then
-    URLURLURL="https://raw.githubusercontent.com/7df77fbc/CSGO/refs/heads/main"
     sed -i "s/${OLDSTEAMAPPID}/${NEWSTEAMAPPID}/g" "${STEAMAPPDIR}/steam_appid.txt"
     sed -i "s/${OLDSTEAMAPPID}/${NEWSTEAMAPPID}/g" "${STEAMAPPDIR}/${STEAMAPP}/steam.inf"
 
-    wget -P "${STEAMAPPDIR}/${STEAMAPP}/addons/sourcemod/gamedata" "${URLURLURL}/nolobbyreservation.games.txt"
-    wget -P "${STEAMAPPDIR}/${STEAMAPP}/addons/sourcemod/scripting" "${URLURLURL}/nolobbyreservation.sp"
+    mv "${HOMEDIR}/nolobbyreservation.games.txt" "${STEAMAPPDIR}/${STEAMAPP}/addons/sourcemod/gamedata"
+    mv "${HOMEDIR}/nolobbyreservation.sp" "${STEAMAPPDIR}/${STEAMAPP}/addons/sourcemod/scripting"
 
     cd "${STEAMAPPDIR}/${STEAMAPP}/addons/sourcemod/scripting"
     bash compile.sh nolobbyreservation.sp
